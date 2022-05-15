@@ -4,6 +4,11 @@ import { useEffect } from 'react'
 import { themeChange } from 'theme-change'
 
 const Navbar = ({ children }) => {
+
+    useEffect(() => {
+        themeChange(false)
+    }, [])
+
     const navItems = <>
         <li><NavLink className="rounded-lg" to='/'>Home</NavLink></li>
         <li><NavLink className="rounded-lg" to='/about'>About</NavLink></li>
@@ -28,16 +33,12 @@ const Navbar = ({ children }) => {
         </label>
     </>
 
-    useEffect(() => {
-        themeChange(false)
-    }, [])
-
     return (
         <div className="drawer drawer-end">
             <input id="my-drawer-3" type="checkbox" className="drawer-toggle" />
             <div className="drawer-content flex flex-col">
                 {/* <!-- Navbar --> */}
-                <div className="w-full navbar bg-base-100 lg:px-20">
+                <div className="w-full navbar bg-base-100 lg:px-20 z-50 fixed top-0">
                     <div className="flex-1 px-2 mx-2 text-xl font-semibold"><Link to='/'>Clean Co.</Link></div>
                     <div className="flex-none lg:hidden">
                         <label htmlFor="my-drawer-3" className="btn btn-square btn-ghost">
