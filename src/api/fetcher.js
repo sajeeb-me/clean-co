@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const fetcher = axios.create({
-    baseURL: 'https://www.themealdb.com/api/json/v1/1',
+    baseURL: 'http://localhost:5000',
 });
 
 export default fetcher;

@@ -6,8 +6,8 @@ const Services = () => {
 
     useEffect(() => {
         (async () => {
-            const { data } = await fetcher.get('/categories.php')
-            setServices(data.categories);
+            const { data } = await fetcher.get('/service')
+            setServices(data);
         })()
     }, [])
 

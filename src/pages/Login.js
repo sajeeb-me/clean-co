@@ -3,28 +3,29 @@ import { Link } from 'react-router-dom';
 
 const Login = () => {
     return (
-        <div class="hero min-h-screen bg-base-200">
-            <div class="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-                <div class="card-body">
-                    <div class="form-control">
-                        <label class="label">
-                            <span class="label-text">Email</span>
+        <div className="hero min-h-screen bg-base-200">
+            <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100 mt-16">
+                <div className="card-body">
+                    <h1 className='text-2xl text-center font-semibold text-primary'>Login</h1>
+                    <div className="form-control">
+                        <label className="label">
+                            <span className="label-text">Email</span>
                         </label>
-                        <input type="text" placeholder="email" class="input input-bordered" />
+                        <input type="text" placeholder="email" className="input input-bordered" />
                     </div>
-                    <div class="form-control">
-                        <label class="label">
-                            <span class="label-text">Password</span>
+                    <div className="form-control">
+                        <label className="label">
+                            <span className="label-text">Password</span>
                         </label>
-                        <input type="text" placeholder="password" class="input input-bordered" />
-                        <label class="label">
-                            <Link to='/login' class="label-text-alt link link-hover">Forgot password?</Link>
+                        <input type="text" placeholder="password" className="input input-bordered" />
+                        <label className="label">
+                            <Link to='/login' className="label-text-alt link link-hover">Forgot password?</Link>
                         </label>
                     </div>
-                    <div class="form-control mt-6">
-                        <button class="btn btn-primary">Login</button>
+                    <div className="form-control mt-6">
+                        <button className="btn btn-primary">Login</button>
                     </div>
-                    <div class="divider">OR</div>
+                    <div className="divider">OR</div>
                     <button className='btn btn-outline'>Continue with Google</button>
                 </div>
             </div>
