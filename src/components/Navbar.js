@@ -1,23 +1,37 @@
 import React, { useState } from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink, useLocation } from 'react-router-dom';
+import useAdmin from '../hooks/useAdmin';
 
 const Navbar = ({ children }) => {
     const [darkTheme, setDarkTheme] = useState(false);
-
+    const [admin] = useAdmin();
+    const { pathname } = useLocation();
 
     const navItems = <>
         <li><NavLink className="rounded-lg" to='/'>Home</NavLink></li>
+        {
+            admin && <li><NavLink className="rounded-lg" to='/dashboard/add-service'>Dashboard</NavLink></li>
+        }
         <li><NavLink className="rounded-lg" to='/about'>About</NavLink></li>
         <li><NavLink className="rounded-lg" to='/services'>Services</NavLink></li>
         <li><NavLink className="rounded-lg" to='/contact'>Contact</NavLink></li>
         <li><NavLink className="rounded-lg" to='/login'>Login</NavLink></li>
-        <li className="dropdown dropdown-hover dropdown-end">
+        <li className="hidden lg:block dropdown dropdown-hover dropdown-end">
             <label tabIndex="0" className="btn btn-primary btn-outline rounded-lg">Book now</label>
             <ul tabIndex="0" className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
-                <li><NavLink className="rounded-lg" to='/book1'>Item-1</NavLink></li>
-                <li><NavLink className="rounded-lg" to='/book2'>Item-2</NavLink></li>
+                <li><NavLink className="rounded-lg" to='/book1'>Pre Book</NavLink></li>
+                <li><NavLink className="rounded-lg" to='/book2'>Express Book</NavLink></li>
             </ul>
         </li>
+        <div tabIndex="0" className="block lg:hidden collapse collapse-arrow border border-primary bg-base-100 rounded-box">
+            <div className="collapse-title font-medium">
+                Book now
+            </div>
+            <div className="collapse-content">
+                <li><NavLink className="rounded-lg" to='/book1'>Pre Book</NavLink></li>
+                <li><NavLink className="rounded-lg" to='/book2'>Express Book</NavLink></li>
+            </div>
+        </div>
         <label className="swap swap-rotate m-5 lg:m-0">
 
             <input onClick={() => setDarkTheme(!darkTheme)} type="checkbox" />
@@ -35,6 +49,11 @@ const Navbar = ({ children }) => {
             <div className="drawer-content flex flex-col">
                 {/* <!-- Navbar --> */}
                 <div className="w-full navbar bg-base-100 lg:px-20 z-50 fixed top-0">
+                    {
+                        pathname.includes('dashboard') && <label htmlFor="my-drawer-2" className="btn btn-ghost btn-circle lg:hidden">
+                            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h7" /></svg>
+                        </label>
+                    }
                     <div className="flex-1 px-2 mx-2 text-xl font-semibold"><Link to='/'>Clean Co.</Link></div>
                     <div className="flex-none lg:hidden">
                         <label htmlFor="my-drawer-3" className="btn btn-square btn-ghost">
